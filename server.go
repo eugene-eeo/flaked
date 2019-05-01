@@ -12,19 +12,9 @@ type IdService struct {
 	epoch    time.Time
 	serverId uint64
 	prev     uint64
-	//mutex    sync.Mutex
 }
 
 func (s *IdService) Next(_ uint64, reply *uint64) error {
-	//s.mutex.Lock()
-	//defer s.mutex.Unlock()
-	//id, err := GenerateId(s.epoch, s.serverId, s.prev)
-	//if err != nil {
-	//	return err
-	//}
-	//s.prev = id
-	//*reply = id
-	//return nil
 	for {
 		prev := s.prev
 		id, err := GenerateId(s.epoch, s.serverId, prev)
